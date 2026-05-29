@@ -3,14 +3,14 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "YOUR_DOCKERHUB_USERNAME/jenkins-demo"
+        IMAGE_NAME = "abhishek1607/jenkins-demo"
     }
 
     stages {
 
         stage('Clone Code') {
             steps {
-                git 'https://github.com/YOUR_GITHUB_USERNAME/jenkins-project.git'
+                git 'https://github.com/Abhishek-Gupta-1607/jenkins-project.git'
             }
         }
 
