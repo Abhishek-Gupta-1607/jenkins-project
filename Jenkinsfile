@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     environment {
@@ -7,12 +6,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Clone Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Abhishek-Gupta-1607/jenkins-project.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
@@ -25,9 +18,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
-
                         docker.image("${IMAGE_NAME}:latest").push()
                     }
                 }
@@ -36,7 +27,6 @@ pipeline {
 
         stage('Deploy Container') {
             steps {
-
                 sh '''
                 docker stop myapp || true
                 docker rm myapp || true
@@ -50,4 +40,3 @@ pipeline {
         }
     }
 }
-
